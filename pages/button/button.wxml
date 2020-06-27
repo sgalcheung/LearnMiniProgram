@@ -1,0 +1,41 @@
+<!--pages/button/button.wxml-->
+<!-- 1.button的基本使用 -->
+<button>按钮</button>
+
+<!-- 2.size：mini/default -->
+<button size="mini">按钮</button>
+<button size="default">按钮</button>
+
+<!-- 3.type属性：primary/default/warn -->
+<view>
+  <button size="mini" type="primary">主要</button>
+  <button size="mini" type="default">默认</button>
+  <button size="mini" type="warn">警告</button>
+</view>
+
+<!-- 4.plain：镂空效果，true背景透明 -->
+<view>
+  <button size="mini" plain>按钮</button>
+</view>
+
+<!-- 5.disabled：true不可以和用户交互 -->
+<view>
+  <button size="mini" disabled>按钮</button>
+</view>
+
+<!-- 6.loading -->
+<view>
+  <button size="mini" loading>按钮</button>
+</view>
+
+<!-- 7.hover-class -->
+<view>
+  <button size="mini" hover-class="hover">按钮</button>
+</view>
+
+<!-- 8.open-type属性 -->
+<view>
+  <button size="mini" open-type="contact" bindlongtap="onBindContact">客服会话</button>
+  <button size="mini" open-type="share">小程序分享</button>
+  <button size="mini" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">用户信息</button>
+</view>
