@@ -1,66 +1,65 @@
 // pages/home/home.js
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    titles: ["衣服", "裤子", "鞋子"]
+  },
+  handleBtnClick() {
+    console.log("按钮发生点击")
+  },
+  handleTouchStart() {
+    console.log("handleTouchStart")
+  },
+  handleTouchMove() {
+    console.log("handleTouchMove")
+  },
+  handleTouchEnd() {
+    console.log("handleTouchEnd")
+  },
+  handleTap() {
+    console.log("handleTap")
+  },
+  handleLongpress() {
+    console.log("handleLongpress")
+  },
+  handleEventClick(event) {
+    console.log("-------", event)
+  },
+  handleEventEnd(event) {
+    console.log("+++++++", event)
+  },
+  handleInner(event) {
+    console.log(event)
+  },
+  handleOuter(event) {
+    console.log(event)
+  },
+  handleItemClick(event) {
+    console.log(event)
+    // title - index
+    const dataset = event.currentTarget.dataset;
+    const title = dataset.item;
+    const index = dataset.index;
+    console.log(title, index)
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
-  onLoad: function (options) {
 
+  // 事件冒泡和事件捕获
+  handleCaptureView1() {
+    console.log("handleCaptureView1")
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
+  handleBindView1() {
+    console.log("handleBindView1")
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
+  handleCaptureView2() {
+    console.log("handleCaptureView2")
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
+  handleBindView2() {
+    console.log("handleBindView2")
   },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
+  handleCaptureView3() {
+    console.log("handleCaptureView3")
   },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
+  handleBindView3() {
+    console.log("handleBindView3")
   },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
-  }
 })
