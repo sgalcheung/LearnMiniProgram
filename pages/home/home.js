@@ -1,66 +1,35 @@
 // pages/home/home.js
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    counter: 0,
+    isShow: true
   },
-
-  /**
-   * Lifecycle function--Called when page load
-   */
-  onLoad: function (options) {
-
+  handleIncrement(event) {
+    console.log("=======", event)
+    this.setData({
+      counter: this.data.counter + 1
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
+  handleTabClick(event) {
+    console.log(event)
   },
+  handleIncrementCpn() {
+    // 最终的目的：修改my-sel中的counter
+    // 1.获取组件对象
+    const my_sel = this.selectComponent('.sel-class')
+    console.log(my_sel)
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
+    // 2.通过setData修改组件中的数据(不合理)
+    // my_sel.setData({
+    //   counter: my_sel.data.counter + 20
+    // })
 
+    // 3.通过方法对数据进行修改
+    my_sel.incrementCounter(10)
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+  handleChangeShow() {
+    this.setData({
+      isShow: !this.data.isShow
+    })
   }
 })
