@@ -54,10 +54,10 @@
     2.必须在Component对象中添加一个选项：options -> multipleSlots: true
  -->
 <button size="mini" bind:tap="handleChangeShow">切换显示</button>
-<view wx:if="{{isShow}}">
+<block wx:if="{{isShow}}">
   <my-mslot>
     <button size="mini" slot="slot2">我是插入的按钮</button>
     <slider slot="slot1"/>
     <text slot="slot3">哈哈哈哈</text>
   </my-mslot>
-</view>
+</block>
