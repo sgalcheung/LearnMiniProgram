@@ -1,0 +1,9 @@
+/* pages/detail/detail.wxss */
+/* 显示购物车栏，需要在page添加样式height: 100%; */
+.detail {
+    height: calc(100% - 120rpx);
+}
+
+.d-swiper swiper {
+    height: 800rpx;
+}

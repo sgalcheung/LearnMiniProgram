@@ -1,0 +1,26 @@
+<!--pages/detail/detail.wxml-->
+<scroll-view class="detail" scroll-y>
+  <!-- 1.展示商品轮播图 -->
+  <w-swiper class="d-swiper" list="{{topImages}}"/>
+
+  <!-- 2.展示商品描述 -->
+  <w-base-info baseInfo="{{baseInfo}}"/>
+
+  <!-- 3.展示商家信息 -->
+  <w-shop-info shopInfo="{{shopInfo}}"/>
+
+  <!-- 4.显示商品具体描述，穿着效果 -->
+  <w-detail-info detailInfo="{{detailInfo}}"/>
+
+  <!-- 5.商品参数信息，包括规格型号，尺寸参照 -->
+  <w-param-info paramInfo="{{paramInfo}}"/>
+
+  <!-- 6.商品评论信息 -->
+  <w-comment-info commentInfo="{{commentInfo}}"/>
+
+  <!-- 7.商品推荐 -->
+  <w-recommend-info recommends="{{recommends}}"/>
+</scroll-view>
+
+<!-- 8.添加购物车bar -->
+<w-bottom-bar bind:addcart="onAddCart"/>

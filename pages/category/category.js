@@ -1,66 +1,96 @@
+const { getCategory, getSubcategory, getCategoryDetail } = require("../../service/category")
+
 // pages/category/category.js
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    categories: [],
+    categoryData: {},
+    currentIndex: 0
   },
-
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
+    // 请求分类数据
+    this._getCategory()
 
   },
+  
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
+  // ------------------- 网络请求函数 -------------------------
+  _getCategory() {
+    getCategory().then(res => {
+      // 1.获取categories
+      const categories = res.data.data.category.list;
 
+      // 2.初始化每个类别的子数据
+      const categoryData = {}
+      for (let i = 0; i < categories.length; i++) {
+        categoryData[i] = {
+          subcategories: [],
+          categoryDetail: []
+        }
+      }
+
+      // 3.修改data中的数据
+      this.setData({
+        categories,
+        categoryData
+      })
+
+      // 4.请求第一个类别的数据
+      this._getSubcategory(0)
+
+      // 5.请求第一个类别的详情数据
+      this._getCategoryDetail(0)
+    })
   },
+  _getSubcategory(currentIndex) {
+    // 1.获取对应的maitkey
+    const maitkey = this.data.categories[currentIndex].maitKey;
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
+    // 2.请求的数据
+    getSubcategory(maitkey).then(res => {
+      // console.log(res)
+      const tempCategoryData = this.data.categoryData;
+      tempCategoryData[currentIndex].subcategories = res.data.data.list;
+      this.setData({
+        categoryData: tempCategoryData
+      })
+    })
   },
+  _getCategoryDetail(currentIndex) {
+    // 1.获取对应的miniWallKey
+    const miniWallKey = this.data.categories[currentIndex].miniWallkey;
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
+    // 2.请求数据类别的数据
+    this._getRealCategoryDetail(currentIndex, miniWallKey, 'pop');
   },
+  _getRealCategoryDetail(currentIndex, miniWallKey, type) {
+    getCategoryDetail(miniWallKey, type).then(res => {
+      // console.log(res)
+      // 1.获取categoryData
+      const categoryData = this.data.categoryData;
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
+      // 2.修改数据
+      categoryData[currentIndex].categoryDetail = res.data;
 
+      // 3.修改data中的数据
+      this.setData({
+        categoryData
+      })
+    })
   },
+  
+  // ------------------- 事件监听函数 -------------------------
+  menuClick(e) {
+    // 1.改变当前的currentIndex
+    const currentIndex = e.detail.currentIndex;
+    this.setData({
+      currentIndex
+    })
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
+    // 2.请求对应的currentIndex的数据
+    this._getSubcategory(currentIndex)
 
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+    // 3.请求对应的currentIndex的详情数据
+    this._getCategoryDetail(currentIndex)
   }
 })

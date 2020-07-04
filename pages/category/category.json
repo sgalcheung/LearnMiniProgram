@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "w-menu": "/pages/category/childCpns/w-menu/w-menu",
+    "w-content": "/pages/category/childCpns/w-content/w-content"
+  }
 }

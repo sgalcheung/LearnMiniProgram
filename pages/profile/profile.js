@@ -1,66 +1,17 @@
 // pages/profile/profile.js
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    orderList: [
+      { icon: 'message.png', info: '我的消息' },
+      { icon: 'pointer.png', info: '我的积分' },
+      { icon: 'vip.png', info: '会员卡' }
+    ],
+    serviceList: [
+      { icon: 'cart.png', info: '我的购物车' },
+      { icon: 'app.png', info: '下载购物APP' }
+    ]
   },
-
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
 
   }
 })

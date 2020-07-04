@@ -35,8 +35,11 @@ Page({
   // ------------------- 网络请求函数 -------------------------
   _getMultiData() {
     getMultiData().then(res => {
+      // console.log(res)
       // 取出轮播图和推荐的数据
-      const banners = res.data.data.banner.list;
+      const banners = res.data.data.banner.list.map(item => {
+        return item.image
+      });
       const recommends = res.data.data.recommend.list;
 
       // 将banners和recommends放到data中
@@ -65,10 +68,10 @@ Page({
       // 2.3.将数据设置到data中的goods中
       const typeKey = `goods.${type}.list`;
       const pageKey = `goods.${type}.page`;
-      // const 
+      // const
       this.setData({
         [typeKey]: oldList,
-        [pageKey]: page 
+        [pageKey]: page
       })
     })
   },
